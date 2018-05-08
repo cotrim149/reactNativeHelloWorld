@@ -13,6 +13,8 @@ import {
   Platform
 } from 'react-native';
 
+import Repo from './components/Repo';
+
 type Props = {};
 export default class App extends Component<Props> {
 
@@ -41,9 +43,7 @@ export default class App extends Component<Props> {
 
         <ScrollView contentContainerStyle={styles.repoList} >
           {
-            this.state.repos.map( repo =>
-              <View key={repo.id} style={styles.repo}/>
-            )
+            this.state.repos.map( repo => <Repo key={repo.id}/> )
           }
 
         </ScrollView>

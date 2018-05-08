@@ -12,8 +12,8 @@ export default class Repo extends Component {
 		return (
 			<View style={styles.repo}>
 				<Image
-					style = {styles.repoImage},
-					source = {{ uri: }}
+					style = {styles.repoImage}
+					source = {{ uri: ''}}
 				/>
 				<View style = {styles.repoInfo}>
 					<Text style = {styles.repoTitle}>Repo Title</Text>
