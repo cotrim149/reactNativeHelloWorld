@@ -71,11 +71,4 @@ const styles = StyleSheet.create({
   repoList: {
     padding: 20,
   },
-  repo: {
-    padding: 20,
-    backgroundColor: '#FFF',
-    height: 120,
-    marginBottom: 20,
-    borderRadius: 5,
-  },
 });
