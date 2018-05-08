@@ -21,12 +21,17 @@ export default class App extends Component<Props> {
       {
         id: 1,
         thumbnail: 'https://avatars2.githubusercontent.com/u/2018859?s=40&v=4',
-        title : 'Repos'
-      }
+        title : 'Repo title',
+        author: 'Repo author'
+      },
+      {
+        id: 2,
+        thumbnail: 'https://avatars2.githubusercontent.com/u/2018859?s=40&v=4',
+        title : 'Repo title 2',
+        author: 'Repo author'
+      },
     ]
   };
-
-
   render() {
     return (
       <View style={styles.container}>
@@ -35,14 +40,12 @@ export default class App extends Component<Props> {
         </View>
 
         <ScrollView contentContainerStyle={styles.repoList} >
-          <View style={styles.repo}/>
-          <View style={styles.repo}/>
-          <View style={styles.repo}/>
-          <View style={styles.repo}/>
-          <View style={styles.repo}/>
-          <View style={styles.repo}/>
-          <View style={styles.repo}/>
-          <View style={styles.repo}/>
+          {
+            this.state.repos.map( repo =>
+              <View key={repo.id} style={styles.repo}/>
+            )
+          }
+
         </ScrollView>
       </View>
     );
