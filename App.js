@@ -10,7 +10,8 @@ import {
   Text,
   View,
   ScrollView,
-  Platform
+  Platform,
+  TouchableOpacity,
 } from 'react-native';
 
 import Repo from './components/Repo';
@@ -39,6 +40,9 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.headerText}>Minha primeira aplicação</Text>
+          <TouchableOpacity onPress = { () => {} } >
+            <Text style={styles.headerButton}>+</Text>
+          </TouchableOpacity>
         </View>
 
         <ScrollView contentContainerStyle={styles.repoList} >
@@ -61,12 +65,18 @@ const styles = StyleSheet.create({
     height: (Platform.OS === 'ios') ? 70 : 50,
     paddingTop: (Platform.OS === 'ios') ? 20 : 0,
     backgroundColor: '#FFF',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingHorizontal: 20,
   },
   headerText: {
     fontSize: 16,
     fontWeight: 'bold'
+  },
+  headerButton: {
+    fontSize: 24,
+    fontWeight: 'bold',
   },
   repoList: {
     padding: 20,
