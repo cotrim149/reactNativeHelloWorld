@@ -21,6 +21,7 @@ type Props = {};
 export default class App extends Component<Props> {
 
   state = {
+    modalVisible: false,
     repos: [
       {
         id: 1,
@@ -41,7 +42,7 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.headerText}>Minha primeira aplicação</Text>
-          <TouchableOpacity onPress = { () => {} } >
+          <TouchableOpacity onPress = { () => this.setState({ modalVisible: true }) } >
             <Text style={styles.headerButton}>+</Text>
           </TouchableOpacity>
         </View>
@@ -52,7 +53,7 @@ export default class App extends Component<Props> {
           }
         </ScrollView>
 
-        <NewRepoModal />
+        <NewRepoModal onCancel={() => this.setState ({ modalVisible: false})} visible={this.state.modalVisible} />
 
       </View>
     );

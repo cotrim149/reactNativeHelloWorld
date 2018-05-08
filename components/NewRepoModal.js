@@ -13,7 +13,7 @@ export default class NewRepoModal extends Component {
 	render() {
 		return(
 			// Modal é uma tela inteira, e a primeira view da hierarquia controla seu compotamento
-			<Modal animationType = 'fade' transparent = {true} visible = {true}>
+			<Modal animationType = 'fade' transparent = {true} visible = {this.props.visible}>
 				<View style={styles.modalContainer}>
 					<View style={styles.boxContainer}>
 						<Text style={styles.boxTitle}>Adicionar repositório</Text>
@@ -23,14 +23,14 @@ export default class NewRepoModal extends Component {
 
 							<TouchableOpacity
 								style={[styles.button, styles.cancelButton]}
-								onPress= { () => {} }
+								onPress= { this.props.onCancel }
 							>
 								<Text style={styles.buttonText}>Cancelar</Text>
 							</TouchableOpacity>
 
 							<TouchableOpacity
 								style={[styles.button, styles.submitButton]}
-								onPress= { () => {} }
+								onPress= { this.props.onAdd }
 							>
 								<Text style={styles.buttonText}>Adicionar</Text>
 							</TouchableOpacity>
