@@ -43,7 +43,7 @@ export default class App extends Component<Props> {
 
         <ScrollView contentContainerStyle={styles.repoList} >
           {
-            this.state.repos.map( repo => <Repo key={repo.id}/> )
+            this.state.repos.map( repo => <Repo key={repo.id} data={repo}/> )
           }
 
         </ScrollView>
