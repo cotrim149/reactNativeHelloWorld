@@ -10,14 +10,31 @@ import {
 } from 'react-native';
 
 export default class NewRepoModal extends Component {
+
+	state = {
+		newRepoText: '',
+	};
+
 	render() {
 		return(
 			// Modal é uma tela inteira, e a primeira view da hierarquia controla seu compotamento
-			<Modal animationType = 'fade' transparent = {true} visible = {this.props.visible}>
+			<Modal
+				animationType = "fade"
+				transparent = {true}
+				visible = {this.props.visible}
+				onRequestClose = {this.props.onCancel}>
 				<View style={styles.modalContainer}>
 					<View style={styles.boxContainer}>
 						<Text style={styles.boxTitle}>Adicionar repositório</Text>
-						<TextInput autoFocus autoCapitalization='none' style={styles.boxInput} underlineColorAndroid = 'rgba(0,0,0,0)' placeholder = 'organização/repositório'></TextInput>
+						<TextInput
+							autoFocus
+							autoCapitalization='none'
+							style={styles.boxInput}
+							underlineColorAndroid = 'rgba(0,0,0,0)'
+							placeholder = 'organização/repositório'
+							value = {this.state.newRepoText}
+							onChangeText = {newRepoText => this.setState({ newRepoText })}
+						/>
 
 						<View style={styles.buttonsContainer}>
 
@@ -30,7 +47,7 @@ export default class NewRepoModal extends Component {
 
 							<TouchableOpacity
 								style={[styles.button, styles.submitButton]}
-								onPress= { this.props.onAdd }
+								onPress = { () => this.props.onAdd(this.state.newRepoText) }
 							>
 								<Text style={styles.buttonText}>Adicionar</Text>
 							</TouchableOpacity>
