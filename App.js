@@ -12,6 +12,7 @@ import {
   ScrollView,
   Platform,
   TouchableOpacity,
+  AsyncStorage,
 } from 'react-native';
 
 import Repo from './components/Repo';
@@ -23,6 +24,12 @@ export default class App extends Component<Props> {
     modalVisible: false,
     repos: [],
   };
+
+  async componentDidMount() {
+    const repos = JSON.parse(await AsyncStorage.getItem('@HelloWorld:repositories')) || [] ;
+
+    this.setState({ repos });
+  }
 
   // prefixo async pode ser usado para definir a requisição como sendo assincrona, from ES 8
   _addRepository = async (newRepoText) => {
@@ -44,6 +51,10 @@ export default class App extends Component<Props> {
         repository,
       ]
     });
+
+    // saving in local database
+      await AsyncStorage.setItem('@HelloWorld:repositories', JSON.stringify(this.state.repos));
+
   };
 
   render() {
